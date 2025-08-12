@@ -50,30 +50,30 @@
     box-sizing: border-box;
 }
 
-  .container {
-    max-width: min(400px, 95vw);
-    margin: auto;
-    padding: calc(env(safe-area-inset-top) + 15vh) clamp(15px, 4vw, 20px) clamp(15px, 4vw, 20px) clamp(15px, 4vw, 20px);
-    height: calc(100vh - (calc(env(safe-area-inset-top) + 30vh)));
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    margin: 0;
-    padding: clamp(15px, 4vh, 25px) clamp(15px, 4vw, 20px);
-    text-align: left;
-    background: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    padding-bottom: clamp(15px, 3vh, 20px);
-  }
+ .container {
+        max-width: min(400px, 95vw);
+        margin: auto;
+        padding: 0 clamp(15px, 4vw, 20px) clamp(15px, 4vw, 20px) clamp(15px, 4vw, 20px);
+        height: calc(100vh - clamp(140px, 30vh, 170px));
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        margin: 0;
+        padding: clamp(15px, 4vh, 25px) clamp(15px, 4vw, 20px);
+        text-align: left;
+        background: transparent;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding-bottom: clamp(15px, 3vh, 20px);
+    }
 
 
     h1 {
