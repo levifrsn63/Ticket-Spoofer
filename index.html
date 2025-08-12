@@ -1,6 +1,4 @@
-
-
-</html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,12 +6,10 @@
 <title>Ticket SPOOF</title>
 
 <!-- Apple Web App Meta Tags -->
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="KVG" />
-<meta name="mobile-web-app-capable" content="yes" />
-<meta name="application-name" content="KVG" />
 
 <!-- Apple Touch Icons -->
 <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iNDAiIGZpbGw9InVybCgjZ3JhZGllbnQwX2xpbmVhcl8xXzEpIi8+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MF9saW5lYXJfMV8xIiB4MT0iMCIgeTE9IjAiIHgyPSIxODAiIHkyPSIxODAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzFlNDBhZiIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMzYjgyZjYiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8dGV4dCB4PSI5MCIgeT0iMTEwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LVkc8L3RleHQ+Cjwvc3ZnPgo=">
@@ -57,8 +53,8 @@
  .container {
         max-width: min(400px, 95vw);
         margin: auto;
-        padding: 0 clamp(15px, 4vw, 20px) 0 clamp(15px, 4vw, 20px);
-        height: calc(100vh - clamp(80px, 18vh, 100px));
+        padding: 0 clamp(15px, 4vw, 20px) clamp(15px, 4vw, 20px) clamp(15px, 4vw, 20px);
+        height: calc(100vh - clamp(140px, 30vh, 170px));
         display: flex;
         flex-direction: column;
         overflow: hidden;
@@ -146,14 +142,14 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: clamp(12px, 3vw, 15px);
-        margin-bottom: clamp(8px, 2vh, 10px);
+        margin-bottom: clamp(12px, 3vh, 15px);
     }
 
     .options-bottom {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: clamp(10px, 2.5vw, 12px);
-        margin-bottom: 0;
+        margin-bottom: clamp(15px, 4vh, 20px);
     }
 
     .option-card {
@@ -209,7 +205,7 @@
         width: 100%;
         max-width: min(400px, 100vw);
         background: rgba(15, 23, 42, 0.95);
-        padding: clamp(8px, 2vh, 12px) 0 max(env(safe-area-inset-bottom), 8px);
+        padding: clamp(10px, 2.5vh, 15px) 0 max(env(safe-area-inset-bottom), 10px);
         border-top: 1px solid rgba(59, 130, 246, 0.3);
         display: flex;
         justify-content: space-around;
