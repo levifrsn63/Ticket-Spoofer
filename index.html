@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KVG App</title>
+<title>Ticket SPOOF</title>
 
 <!-- Apple Web App Meta Tags -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Ticket Spoof">
-<meta name="theme-color" content="#1e40af">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 <!-- Apple Touch Icons -->
 <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iNDAiIGZpbGw9InVybCgjZ3JhZGllbnQwX2xpbmVhcl8xXzEpIi8+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MF9saW5lYXJfMV8xIiB4MT0iMCIgeTE9IjAiIHgyPSIxODAiIHkyPSIxODAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzFlNDBhZiIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMzYjgyZjYiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8dGV4dCB4PSI5MCIgeT0iMTEwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LVkc8L3RleHQ+Cjwvc3ZnPgo=">
@@ -36,15 +36,21 @@
     }
 
     .app-container {
-        background: rgba(15, 23, 42, 0.8);
-        border-radius: 0;
-        backdrop-filter: blur(10px);
-        margin: 0;
-        height: 100vh;
-        overflow: hidden;
-        padding-top: clamp(70px, 15vh, 90px);
-        box-sizing: border-box;
-    }
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 0;
+    backdrop-filter: blur(10px);
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    /* Use safe area inset for top padding instead of clamp */
+    padding-top: env(safe-area-inset-top);
+    /* You can add left/right/bottom too if needed */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+    box-sizing: border-box;
+}
+
 
     .container {
         max-width: min(400px, 95vw);
