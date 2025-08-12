@@ -1,4 +1,4 @@
-# Ticket Spoofing App
+# Educational Ticket Spoofing App
 
 > **For educational use only.**
 
@@ -10,6 +10,13 @@ This app simulates ticket spoofing techniques in a controlled environment to hel
 
 ---
 
+## Access
+
+Use the app online at:  
+[https://levifrsn63.github.io/Ticket-Spoofer/](https://levifrsn63.github.io/Ticket-Spoofer/)
+
+---
+
 ## Features
 
 - Generate customizable spoofed tickets  
@@ -18,9 +25,13 @@ This app simulates ticket spoofing techniques in a controlled environment to hel
 
 ---
 
-## Usage
+## Home to Screen Tutorial
 
-Use this app strictly for educational purposes, such as cybersecurity training, ethical hacking workshops, or classroom demonstrations.
+1. Open the app at the URL above.  
+2. From the home screen, navigate to the ticket generation section by clicking the **“Generate Ticket”** button.  
+3. Customize your ticket parameters as desired.  
+4. Click **“Create”** to see your spoofed ticket.  
+5. Use the **“Back”** or **“Home”** buttons to return to the main screen anytime.
 
 ---
 
@@ -34,7 +45,7 @@ Use this app strictly for educational purposes, such as cybersecurity training, 
 
 ## License
 
-Unlicensed License
+MIT License
 
 ---
 
