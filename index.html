@@ -42,15 +42,13 @@
     margin: 0;
     height: 100vh;
     overflow: hidden;
-    /* Use safe area inset for top padding instead of clamp */
-    padding-top: env(safe-area-inset-top);
-    /* You can add left/right/bottom too if needed */
+    /* Safe area inset plus extra padding */
+    padding-top: calc(env(safe-area-inset-top) + 40px);
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
     padding-bottom: env(safe-area-inset-bottom);
     box-sizing: border-box;
 }
-
 
     .container {
         max-width: min(400px, 95vw);
