@@ -19,6 +19,10 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+    * {
+        box-sizing: border-box;
+    }
+
     body {
         margin: 0;
         font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -27,8 +31,10 @@
         height: 100vh;
         overflow: hidden;
         padding: 0;
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
     }
-    
+
     .app-container {
         background: rgba(15, 23, 42, 0.8);
         border-radius: 0;
@@ -36,20 +42,20 @@
         margin: 0;
         height: 100vh;
         overflow: hidden;
-        padding-top: 80px;
+        padding-top: clamp(70px, 15vh, 90px);
         box-sizing: border-box;
     }
-    
+
     .container {
-        max-width: 400px;
+        max-width: min(400px, 95vw);
         margin: auto;
-        padding: 0 20px 20px 20px;
-        height: calc(100vh - 160px);
+        padding: 0 clamp(15px, 4vw, 20px) clamp(15px, 4vw, 20px) clamp(15px, 4vw, 20px);
+        height: calc(100vh - clamp(140px, 30vh, 170px));
         display: flex;
         flex-direction: column;
         overflow: hidden;
     }
-    
+
     .header {
         position: fixed;
         top: 0;
@@ -57,59 +63,69 @@
         right: 0;
         z-index: 100;
         margin: 0;
-        padding: 20px;
+        padding: clamp(15px, 4vh, 25px) clamp(15px, 4vw, 20px);
         text-align: left;
         background: transparent;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(10px);
+        padding-bottom: clamp(15px, 3vh, 20px);
     }
-    
+
     h1 {
-        font-size: 28px;
+        font-size: clamp(22px, 5vw, 28px);
         font-weight: 600;
         margin: 0;
         color: white;
-        padding-left: 20px;
+        padding-left: clamp(15px, 4vw, 20px);
+        line-height: 1.2;
     }
-    
+
     .ticket-card {
         background: linear-gradient(135deg, #1e40af, #2563eb, #3b82f6);
-        border-radius: 24px;
-        padding: 30px 20px;
-        margin-bottom: 25px;
+        border-radius: clamp(16px, 4vw, 24px);
+        padding: clamp(20px, 5vw, 30px) clamp(15px, 4vw, 20px);
+        margin-bottom: clamp(20px, 4vh, 25px);
         text-align: center;
         position: relative;
         overflow: hidden;
-        min-height: 200px;
+        min-height: clamp(180px, 35vw, 220px);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         aspect-ratio: 1;
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 100%; /* Make it a rectangle */
+        height: auto; /* Adjust height automatically */
     }
-    
+
     .ticket-card.qr-active {
-        padding: 20px;
-        background: rgba(96, 165, 250, 0.3);
+        padding: 0; /* Remove padding to make QR code fill the card */
+        background: transparent; /* Transparent background for QR code */
         aspect-ratio: 1;
         border: 2px solid rgba(96, 165, 250, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; /* Ensure QR code stays within bounds */
     }
-    
+
     .ticket-card h2 {
-        font-size: 24px;
+        font-size: clamp(20px, 5vw, 24px);
         font-weight: 700;
-        margin: 0 0 15px 0;
+        margin: 0 0 clamp(10px, 3vh, 15px) 0;
         letter-spacing: 1px;
         color: white;
+        line-height: 1.2;
     }
-    
+
     .ticket-status {
-        font-size: 24px;
+        font-size: clamp(16px, 4vw, 20px);
         font-weight: 600;
-        margin-bottom: 20px;
+        margin-bottom: clamp(15px, 4vh, 20px);
         color: white;
+        line-height: 1.3;
     }
-    
+
     .ticket-illustration {
         display: flex;
         justify-content: center;
@@ -117,94 +133,103 @@
         height: 120px;
         margin-bottom: 10px;
     }
-    
+
     .person-graphic {
         width: 200px;
         height: 120px;
     }
-    
+
     .options-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        margin-bottom: 15px;
+        gap: clamp(12px, 3vw, 15px);
+        margin-bottom: clamp(12px, 3vh, 15px);
     }
-    
+
     .options-bottom {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 12px;
-        margin-bottom: 20px;
+        gap: clamp(10px, 2.5vw, 12px);
+        margin-bottom: clamp(15px, 4vh, 20px);
     }
-    
+
     .option-card {
         background: rgba(0, 0, 0, 0.8);
         border: 1px solid white;
-        border-radius: 16px;
-        padding: 18px 12px;
+        border-radius: clamp(12px, 3vw, 16px);
+        padding: clamp(14px, 3.5vw, 18px) clamp(10px, 2.5vw, 12px);
         text-align: center;
         cursor: pointer;
         transition: all 0.2s ease;
         backdrop-filter: blur(10px);
+        min-height: clamp(70px, 18vw, 90px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
-    
-    .option-card:hover {
+
+    .option-card:hover,
+    .option-card:active {
         background: rgba(59, 130, 246, 0.2);
         border-color: #60a5fa;
-        transform: translateY(-2px);
+        transform: translateY(-1px) scale(0.98);
     }
-    
+
     .option-icon {
-        width: 40px;
-        height: 40px;
+        width: clamp(32px, 8vw, 40px);
+        height: clamp(32px, 8vw, 40px);
         background: linear-gradient(135deg, #3b82f6, #60a5fa);
-        border-radius: 12px;
-        margin: 0 auto 12px auto;
+        border-radius: clamp(8px, 2vw, 12px);
+        margin: 0 auto clamp(8px, 2vh, 12px) auto;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 18px;
+        font-size: clamp(14px, 3.5vw, 18px);
         color: white;
+        flex-shrink: 0;
     }
-    
+
     .option-text {
-        font-size: 14px;
+        font-size: clamp(12px, 3vw, 14px);
         font-weight: 500;
         line-height: 1.3;
         color: white;
+        text-align: center;
     }
-    
+
     .bottom-nav {
         position: fixed;
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
         width: 100%;
-        max-width: 400px;
+        max-width: min(400px, 100vw);
         background: rgba(15, 23, 42, 0.95);
-        padding: 12px 0;
+        padding: clamp(10px, 2.5vh, 15px) 0 max(env(safe-area-inset-bottom), 10px);
         border-top: 1px solid rgba(59, 130, 246, 0.3);
         display: flex;
         justify-content: space-around;
         align-items: center;
         backdrop-filter: blur(10px);
     }
-    
+
     .nav-item {
         display: flex;
         flex-direction: column;
         align-items: center;
         cursor: pointer;
-        padding: 8px 16px;
-        border-radius: 12px;
+        padding: clamp(6px, 1.5vh, 8px) clamp(12px, 3vw, 16px);
+        border-radius: clamp(8px, 2vw, 12px);
         transition: all 0.2s ease;
         position: relative;
+        min-width: clamp(60px, 15vw, 80px);
     }
-    
+
     .nav-item.active {
         background: rgba(59, 130, 246, 0.3);
     }
-    
+
     .nav-item.active::before {
         content: '';
         position: absolute;
@@ -216,46 +241,47 @@
         background: #60a5fa;
         border-radius: 2px;
     }
-    
+
     .nav-icon {
-        width: 28px;
-        height: 28px;
-        margin-bottom: 4px;
+        width: clamp(24px, 6vw, 28px);
+        height: clamp(24px, 6vw, 28px);
+        margin-bottom: clamp(3px, 1vh, 6px);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 20px;
+        font-size: clamp(16px, 4vw, 20px);
         color: #60a5fa;
     }
-    
+
     .nav-text {
-        font-size: 12px;
+        font-size: clamp(10px, 2.5vw, 12px);
         font-weight: 500;
         color: #60a5fa;
+        white-space: nowrap;
     }
-    
+
     .nav-item.active .nav-icon,
     .nav-item.active .nav-text {
         color: white;
     }
-    
+
     .page {
         display: none;
     }
-    
+
     .page.active {
         display: block;
         flex: 1;
         overflow: hidden;
         padding-bottom: 20px;
     }
-    
+
     .page#profile {
         max-height: calc(100vh - 160px);
         overflow-y: auto;
         overflow-x: hidden;
     }
-    
+
     .qr-upload-section {
         background: rgba(15, 23, 42, 0.6);
         border: 1px solid rgba(59, 130, 246, 0.4);
@@ -264,7 +290,7 @@
         margin: 20px 0;
         text-align: center;
     }
-    
+
     .profile-settings-section {
         background: rgba(15, 23, 42, 0.6);
         border: 1px solid rgba(59, 130, 246, 0.4);
@@ -272,7 +298,7 @@
         padding: 20px;
         margin: 20px 0;
     }
-    
+
     .setting-item {
         display: flex;
         justify-content: space-between;
@@ -280,16 +306,16 @@
         padding: 15px 0;
         border-bottom: 1px solid rgba(59, 130, 246, 0.2);
     }
-    
+
     .setting-item:last-child {
         border-bottom: none;
     }
-    
+
     .setting-label {
         font-weight: 500;
         color: #e2e8f0;
     }
-    
+
     .setting-value {
         color: #60a5fa;
         font-size: 14px;
@@ -298,11 +324,11 @@
         border-radius: 6px;
         transition: all 0.2s ease;
     }
-    
+
     .setting-value:hover {
         background: rgba(59, 130, 246, 0.2);
     }
-    
+
     .setting-value input {
         background: transparent;
         border: none;
@@ -312,14 +338,14 @@
         width: 120px;
         font-family: 'Poppins', sans-serif;
     }
-    
+
     .setting-value input:focus {
         outline: none;
         background: rgba(59, 130, 246, 0.1);
         border-radius: 4px;
         padding: 2px 6px;
     }
-    
+
     .upload-button {
         background: linear-gradient(135deg, #3b82f6, #60a5fa);
         border: none;
@@ -332,12 +358,12 @@
         transition: all 0.2s ease;
         font-family: 'Poppins', sans-serif;
     }
-    
+
     .upload-button:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
     }
-    
+
     .qr-preview {
         max-width: 200px;
         max-height: 200px;
@@ -345,7 +371,7 @@
         margin: 15px auto;
         border: 2px solid rgba(59, 130, 246, 0.4);
     }
-    
+
     .qr-code-display {
         margin: 0;
         text-align: center;
@@ -362,7 +388,7 @@
         padding: 0;
         box-sizing: border-box;
     }
-    
+
     .qr-code-display img {
         width: 100%;
         height: 100%;
@@ -372,23 +398,23 @@
         background: white;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
-    
+
     .qr-code-display img.fit-contain {
         object-fit: contain;
     }
-    
+
     .qr-code-display img.fit-cover {
         object-fit: cover;
     }
-    
+
     .qr-code-display img.fit-fill {
         object-fit: fill;
     }
-    
+
     .qr-code-display img.fit-scale-down {
         object-fit: scale-down;
     }
-    
+
     .scale-controls {
         display: flex;
         justify-content: center;
@@ -396,7 +422,7 @@
         margin-top: 15px;
         flex-wrap: wrap;
     }
-    
+
     .scale-button {
         background: rgba(59, 130, 246, 0.3);
         border: 1px solid rgba(59, 130, 246, 0.6);
@@ -408,16 +434,16 @@
         transition: all 0.2s ease;
         font-family: 'Poppins', sans-serif;
     }
-    
+
     .scale-button.active {
         background: linear-gradient(135deg, #3b82f6, #60a5fa);
         border-color: #60a5fa;
     }
-    
+
     .scale-button:hover {
         background: rgba(59, 130, 246, 0.5);
     }
-    
+
     .remove-qr {
         background: rgba(220, 38, 38, 0.8);
         border: none;
@@ -428,6 +454,57 @@
         cursor: pointer;
         margin-top: 8px;
         font-family: 'Poppins', sans-serif;
+    }
+
+    /* iPhone specific optimizations */
+    @supports (padding: max(0px)) {
+        .app-container {
+            padding-top: max(clamp(70px, 15vh, 90px), env(safe-area-inset-top));
+        }
+
+        .header {
+            padding-top: max(clamp(15px, 4vh, 25px), env(safe-area-inset-top, 20px));
+        }
+    }
+
+    /* Smooth transitions for all interactive elements */
+    .ticket-card, .option-card, .nav-item, .upload-button, .scale-button {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Better touch targets for mobile */
+    @media (hover: none) and (pointer: coarse) {
+        .option-card {
+            min-height: 44px;
+        }
+
+        .nav-item {
+            min-height: 44px;
+            padding: clamp(8px, 2vh, 12px) clamp(12px, 3vw, 16px);
+        }
+
+        .upload-button, .scale-button {
+            min-height: 44px;
+            padding: clamp(10px, 2.5vh, 12px) clamp(20px, 5vw, 24px);
+        }
+    }
+
+    /* Reduce motion for users who prefer it */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            transition-duration: 0.1s !important;
+        }
+
+        .option-card:hover, .option-card:active {
+            transform: none;
+        }
+    }
+
+    /* Dark mode adaptation for better contrast */
+    @media (prefers-color-scheme: dark) {
+        .option-card {
+            background: rgba(0, 0, 0, 0.9);
+        }
     }
 </style>
 </head>
@@ -454,7 +531,7 @@
                             <line x1="25" y1="62" x2="55" y2="62" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
                             <line x1="25" y1="74" x2="85" y2="74" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
                             <line x1="25" y1="86" x2="65" y2="86" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
-                            
+
                             <!-- Person figure -->
                             <g transform="translate(135, 25)">
                                 <!-- Head -->
@@ -472,7 +549,7 @@
                                 <!-- Shoes -->
                                 <ellipse cx="9.5" cy="62" rx="2" ry="1.5" fill="#1e293b"/>
                                 <ellipse cx="14.5" cy="62" rx="2" ry="1.5" fill="#1e293b"/>
-                                
+
                                 <!-- Luggage -->
                                 <rect x="25" y="42" width="14" height="18" rx="2" fill="#1e293b" stroke="rgba(255,255,255,0.8)" stroke-width="1"/>
                                 <!-- Luggage details -->
@@ -490,7 +567,7 @@
                         </svg>
                     </div>
                 </div>
-                
+
                 <div class="qr-code-display" id="qrCodeDisplay" style="display: none;">
                     <img id="qrCodeImage" alt="QR Code">
                 </div>
@@ -506,7 +583,7 @@
                     <div class="option-text">Order subscription</div>
                 </div>
             </div>
-            
+
             <div class="options-bottom">
                 <div class="option-card">
                     <div class="option-icon">💬</div>
@@ -540,11 +617,11 @@
                 <h3 id="profileName">Levi</h3>
                 <p>Account settings and preferences</p>
             </div>
-            
+
             <div class="qr-upload-section">
                 <h4 style="margin-top: 0; color: #60a5fa;">🎫 QR Code Ticket</h4>
                 <p style="font-size: 14px; opacity: 0.8; margin-bottom: 15px;">Upload your QR code ticket to display on the home page</p>
-                
+
                 <div id="qrUploadArea">
                     <input type="file" id="qrFileInput" accept="image/*" style="display: none;">
                     <button class="upload-button" onclick="document.getElementById('qrFileInput').click()">
@@ -557,10 +634,10 @@
                         🎯 Generate Custom QR
                     </button>
                 </div>
-                
+
                 <div id="customQRArea" style="display: none; margin-top: 15px; padding: 15px; background: rgba(59, 130, 246, 0.1); border-radius: 8px;">
                     <p style="font-size: 14px; color: #60a5fa; margin-bottom: 10px;">Enter text or URL for QR code:</p>
-                    <input type="text" id="customQRText" placeholder="e.g., https://kvg-transport.com or KVG Bus Ticket #12345" 
+                    <input type="text" id="customQRText" placeholder="e.g., https://kvg-transport.com or KVG Bus Ticket #12345"
                            style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid rgba(96, 165, 250, 0.5); background: rgba(15, 23, 42, 0.8); color: white; font-family: 'Poppins', sans-serif;">
                     <div style="margin-top: 10px;">
                         <button class="upload-button" onclick="generateQRFromText()" style="background: linear-gradient(135deg, #16a34a, #22c55e); font-size: 12px; padding: 8px 16px;">
@@ -569,7 +646,7 @@
                         <button class="remove-qr" onclick="cancelCustomQR()" style="font-size: 12px; padding: 8px 16px;">Cancel</button>
                     </div>
                 </div>
-                
+
                 <div id="qrPreviewArea" style="display: none; margin-top: 15px;">
                     <p style="font-size: 14px; color: #60a5fa;">Preview:</p>
                     <img id="qrPreviewImage" class="qr-preview" alt="QR Code Preview">
@@ -579,11 +656,11 @@
                     </button>
                     <button class="remove-qr" onclick="cancelQRUpload()">Cancel</button>
                 </div>
-                
+
                 <div id="qrManagementArea" style="margin-top: 20px;">
                     <div id="currentQRStatus" style="display: none;">
                         <p style="color: #22c55e; font-size: 14px;">✅ QR Code is currently active on home page</p>
-                        
+
                         <div style="margin: 15px 0;">
                             <p style="font-size: 14px; color: #60a5fa; margin-bottom: 8px;">⚙️ QR Code Settings:</p>
                             <div class="scale-controls">
@@ -601,24 +678,24 @@
                                 Adjust how the QR code appears and spacing around it
                             </p>
                         </div>
-                        
+
                         <button class="remove-qr" onclick="removeQRCode()" style="background: rgba(220, 38, 38, 0.8); padding: 8px 16px;">
                             🗑️ Remove QR Code
                         </button>
                     </div>
                 </div>
             </div>
-            
+
             <div class="profile-settings-section">
                 <h4 style="margin-top: 0; color: #60a5fa;">👤 Personal Information</h4>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Name</span>
                     <span class="setting-value" onclick="editSetting('name', this)">
                         <input type="text" value="Levi" id="nameInput" onblur="saveSetting('name', this)" onkeypress="handleEnter(event, this)">
                     </span>
                 </div>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Address</span>
                     <span class="setting-value" onclick="editSetting('address', this)">
@@ -626,103 +703,103 @@
                     </span>
                 </div>
             </div>
-            
+
             <div class="profile-settings-section">
                 <h4 style="margin-top: 0; color: #60a5fa;">⚙️ Account Settings</h4>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Account Type</span>
                     <span class="setting-value">Standard</span>
                 </div>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Member Since</span>
                     <span class="setting-value">January 2024</span>
                 </div>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Subscription Status</span>
                     <span class="setting-value">Not Active</span>
                 </div>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Notifications</span>
                     <span class="setting-value" onclick="toggleSetting('notifications', this)">Enabled</span>
                 </div>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Language</span>
                     <span class="setting-value" onclick="cycleSetting('language', ['English', 'German', 'French'], this)">English</span>
                 </div>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Auto-Renewal</span>
                     <span class="setting-value" onclick="toggleSetting('autoRenewal', this)">Disabled</span>
                 </div>
             </div>
-            
+
             <div class="profile-settings-section">
                 <h4 style="margin-top: 0; color: #60a5fa;">📱 App Preferences</h4>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Dark Mode</span>
                     <span class="setting-value" onclick="toggleSetting('darkMode', this)">Enabled</span>
                 </div>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Push Notifications</span>
                     <span class="setting-value" onclick="toggleSetting('pushNotifications', this)">On</span>
                 </div>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Location Services</span>
                     <span class="setting-value" onclick="toggleSetting('locationServices', this)">Allowed</span>
                 </div>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Data Usage</span>
                     <span class="setting-value" onclick="cycleSetting('dataUsage', ['WiFi Only', 'Mobile + WiFi', 'Disabled'], this)">WiFi Only</span>
                 </div>
             </div>
-            
+
             <div class="profile-settings-section">
                 <h4 style="margin-top: 0; color: #60a5fa;">💳 Payment & Billing</h4>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Payment Method</span>
                     <span class="setting-value">Not Added</span>
                 </div>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Billing Address</span>
                     <span class="setting-value">Haibach, Germany</span>
                 </div>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Next Payment</span>
                     <span class="setting-value">N/A</span>
                 </div>
             </div>
-            
+
             <div class="profile-settings-section">
                 <h4 style="margin-top: 0; color: #60a5fa;">🛡️ Privacy & Security</h4>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Two-Factor Auth</span>
                     <span class="setting-value" onclick="toggleSetting('twoFactor', this)">Disabled</span>
                 </div>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Data Sharing</span>
                     <span class="setting-value" onclick="cycleSetting('dataSharing', ['Limited', 'Minimal', 'Full'], this)">Limited</span>
                 </div>
-                
+
                 <div class="setting-item">
                     <span class="setting-label">Analytics</span>
                     <span class="setting-value" onclick="toggleSetting('analytics', this)">Anonymous</span>
                 </div>
             </div>
-            
+
             <div style="text-align: center; padding: 20px; opacity: 0.6;">
                 <p style="font-size: 12px;">KVG App Version 1.0.0</p>
                 <p style="font-size: 12px;">© 2024 KVG Transport Services</p>
@@ -750,14 +827,4 @@
 <script src="script.js"></script>
 
 </body>
-</html>
-
-  <link href="style.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-  Hello world
-  <script src="script.js"></script>
-</body>
-
 </html>
