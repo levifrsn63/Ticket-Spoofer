@@ -49,6 +49,3 @@ MIT License
 
 ---
 
-## Contact
-
-For questions, contact: [your-email@example.com]
